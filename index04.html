@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="utf-8">
+    <title>报名页</title>
+    <link rel="stylesheet" href="res/css/layout.css">
+    <link rel="stylesheet" href="res/css/style.css">
+</head>
+<body>
+
+<div class="bg">
+    <section id="header">
+        <img src="res/img/signup01.png" height="100%" width="100%">
+    </section>
+    <section id="singUpInsideContent">
+        <div class="singUpInsideContent">
+            <!--<div class="insideContent">-->
+            <!--</div>-->
+            <img src="res/img/signup02.png" height="100%" width="100%">
+            <div class="spread">
+                <button id="spread01" class="btnSpread" type="button" value="spread">
+                    <img src="res/img/btnSpread.png" height="auto" width="100%">
+                </button>
+            </div>
+            <div id="hideContent01" class="fold">
+                <img src="res/img/signup03.png" height="100%" width="100%">
+            </div>
+
+            <img src="res/img/signup04.png" height="100%" width="100%">
+            <div class="spread">
+                <button id="spread02" class="btnSpread" type="button" value="spread">
+                    <img src="res/img/btnSpread.png" height="auto" width="100%">
+                </button>
+            </div>
+            <div id="hideContent02" class="fold">
+                <img src="res/img/signup05.png" height="100%" width="100%">
+            </div>
+
+            <img src="res/img/signupMiddle.png" height="100%" width="100%">
+        </div>
+    </section>
+    <section id="content">
+        <div class="content">
+            <div class="insideContent">
+                <div id="warningDialog" style="display:none">
+                    <div class="warningDialog">
+                        <div id="dialogContent" class="dialogContent">
+                            <p></p>
+                            <div class="confirm">
+                                <button id="btnConfirm" class="btnConfirm" type="button" value="spread">
+                                    <img src="res/img/btnConfirm.png" height="auto" width="100%">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="signUpForm">
+                    <form id="signUpForm" name="signUpForm">
+                        <table class="signUpTable" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="labelTd">
+                                    <span>姓名：</span>
+                                </td>
+                                <td class="textTd">
+                                    <input id="user" type="text"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="labelTd">
+                                    <span>手机：</span>
+                                </td>
+                                <td class="textTd">
+                                    <input id="phone" type="text"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="labelTd">
+                                    <span>医院名称：</span>
+                                </td>
+                                <td class="textTd">
+                                    <input id="hospital" type="text"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="labelTd">
+                                    <span>创意类别：</span>
+                                </td>
+                                <td class="textTd">
+                                    <select id="createType">
+                                        <option class="createTypeOption" value="XXX">XXX</option>
+                                        <option class="createTypeOption" value="XXX">XXX</option>
+                                        <option class="createTypeOption" value="XXX">XXX</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="labelTd">
+                                    <span>创意主题：</span>
+                                </td>
+                                <td class="textTd">
+                                    <input id="theme" placeholder="10字以内" type="text"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="labelTd">
+                                    <span>具体描述：</span>
+                                </td>
+                                <td class="textTd">
+                                    <textarea id="description" placeholder="50-500字"></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="attention">
+                            <p>备注：提交报名后您的创意不可再修改，进入系统审
+                                核状态，24小时内审核通过即可开始上线被投票。如
+                                有问题请与金蝶医疗客服平台微信号联系。</p>
+                        </div>
+                        <div class="submit">
+                            <button id="btnSignUp" class="btnSubmit" type="button" value="spread">
+                                <img src="res/img/btnSubmit.png" height="auto" width="100%">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section id="footer">
+        <img src="res/img/signupFooter.png" height="100%" width="100%">
+    </section>
+</div>
+<script src="res/js/jquery.min.js"></script>
+<script>
+    var spread01 = $("#spread01"),
+        spread02 = $("#spread02"),
+        hideContent01 = $("#hideContent01"),
+        hideContent02 = $("#hideContent02");
+
+    var btnConfirm = $("#btnConfirm");
+    var warningDialog = $("#warningDialog");
+
+    var btnSignUp = $("#btnSignUp");
+    var description = $("#description");
+
+    var len;
+
+    var user = $("#user"),
+        phone = $("#phone"),
+        hospital = $("#hospital"),
+        theme = $("#theme"),
+        description = $("#description");
+
+
+
+    spread01.on("click", function(){
+       //hideContent01.removeClass("fold").addClass("open");
+       spread01.css("display","none");
+       hideContent01.show("fast");
+    });
+    spread02.on("click", function(){
+        spread02.css("display","none");
+       hideContent02.show("fast");
+    });
+
+    //点击提交按钮验证
+    btnSignUp.bind("click",function(){
+        len = description.val().length;
+        if(user.val()=='' || user.val() == "undefinded"){
+            
+            openWarning("请填写姓名。");
+           
+        }
+        else if(phone.val()=='' || phone.val() == "undefinded"){
+            
+            openWarning("请填写手机号。");
+           
+        }
+        else if(hospital.val()=='' || hospital.val() == "undefinded"){
+            
+            openWarning("请填写医院名称。");
+        }
+        else if(theme.val()=='' || theme.val() == "undefinded"){
+            
+            openWarning("请填写创意主题。");
+           
+        }
+         else if(description.val()=='' || description.val() == "undefinded"){
+           
+            openWarning("请填写内容。");
+           
+        }
+         else if(len>500){
+           openWarning("大神好有才，超500字啦！照顾一下凡人的感受，精简一下再提交吧~");
+        }
+        else{
+            openWarning("恭喜！你已经成功报名啦！");
+        }
+    });
+
+    function openWarning (warningText) {
+         $("#dialogContent p").text(warningText);
+            warningDialog.css("display","block");
+    }
+
+    //dialog confirm
+    btnConfirm.bind("click",function(){
+        //alert("ok")
+        warningDialog.css("display","none");
+    });
+
+
+
+
+
+
+</script>
+</body>
+</html>
+

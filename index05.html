@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="utf-8">
+    <title>未参加-投票</title>
+    <link rel="stylesheet" href="res/css/layout.css">
+    <link rel="stylesheet" href="res/css/style.css">
+</head>
+<body>
+
+<div class="bg">
+    <section id="header">
+        <img src="res/img/header02.png" height="100%" width="100%">
+    </section>
+    <section id="content">
+        <div class="content">
+            <div class="insideContent">
+                <div class="textLead">
+                    <p><span id="userName">XXX</span>正在参加金蝶医疗“庆用户数破百万，你
+                        提创意我送大奖”活动，iPhone6S、Apple
+                        watch快到碗里来！</p>
+                </div>
+                <div class="textInput">
+                    <!--<div class="textInputHeader">-->
+                    <!--<div class="InputTitle">-->
+                    <!--<span>主题:</span>-->
+                    <!--<input class="textInputTitle"/>-->
+                    <!--</div>-->
+                    <!--<div class="ticketNum">-->
+                    <!--<img class="imgTicketNum" src="res/img/like.png">-->
+                    <!--<span>123票</span>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="textInputContent">-->
+                    <!--<span>内容：</span>-->
+                    <!--<textarea class="textInputContentArea"></textarea>-->
+                    <!--</div>-->
+                    <div class="textInputBox">
+                        <table class="textInputTable" cellspacing="0" cellpadding="0">
+                            <tr class="textInputTableHead">
+                                <td class="textInputTableTheme"><label>主题：</label><span>XXXX</span></td>
+                                <td class="textInputTableLike"></td>
+                                <td class="textInputTableName"><span>1000票</span></td>
+                            </tr>
+                        </table>
+                        <table class="textContentTable" cellspacing="0" cellpadding="0">
+                            <tr class="textInputTableDescription">
+                            <td>
+                            <label>内容：</label>
+                            <textarea  class="textInputContentArea" ></textarea></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="vote">
+                        <button id="btnVote" class="btnVote" type="button" value="为TA投票">
+                            <img src="res/img/vote.png" height="100%" width="100%">
+                        </button>
+                    </div>
+                    <div class="Ijoin">
+                        <button id="btnIjoin" class="btnIjoin" type="button" value="我也要参加">
+                            <img src="res/img/btnIjoin.png" height="100%" width="100%">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="footer">
+        <img src="res/img/footer02.png" height="100%" width="100%">
+    </section>
+</div>
+
+<script src="res/js/jquery.min.js"></script>
+<script>
+    //“为TA投票”，“我也要参加”按钮点击事件
+    var btnVote = $("#btnVote");
+    var btnIjoin = $("#btnIjoin");
+
+    btnVote.on("click",function(){
+        alert("你成功为TA投票啦！");
+    });
+
+    btnIjoin.on("click",function(){
+       window.location.href= "index04.html";
+    });
+
+</script>
+
+</body>
+</html>
+
+<!--
+    User: lijingwen
+    Date: 2015-09-28 Time: 21:24
+-->

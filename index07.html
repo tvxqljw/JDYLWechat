@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="utf-8">
+    <title>审核未通过</title>
+    <link rel="stylesheet" href="res/css/layout.css">
+    <link rel="stylesheet" href="res/css/style.css">
+</head>
+<body>
+
+<div class="bg">
+    <section id="header">
+        <img src="res/img/header02-2.png" height="100%" width="100%">
+        <div class="content">
+             <div class="insideContent">
+            <div class="create">
+                        <button id="btnCreate" class="btnCreate" type="button" value="我的创意">
+                            <img src="res/img/btnCreate.png" height="100%" width="100%">
+                        </button>
+                    </div>
+                    </div>
+        </div>
+        
+        <img src="res/img/header02-3.png" height="100%" width="100%">
+    </section>
+    <section id="content">
+        <div class="content">
+            <div class="insideContent">
+                <div class="textLead">
+                    <p><span id="userName">XXX</span>正在参加金蝶医疗“庆用户数破百万，你
+                        提创意我送大奖”活动，iPhone6S、Apple
+                        watch快到碗里来！</p>
+                </div>
+                <div class="textInput">
+                    <div class="textInputBox">
+                        <table class="textInputTable" cellspacing="0" cellpadding="0">
+                            <tr class="textInputTableHead">
+                                <td class="textInputTableTheme"><label>主题：</label><span>XXXX</span></td>
+                                <td class="textInputTableLike"></td>
+                                <td class="textInputTableName"><span>1000票</span></td>
+                            </tr>
+                        </table>
+                        <table class="textContentTable" cellspacing="0" cellpadding="0">
+                            <tr class="textInputTableDescription">
+                            <td>
+                            <label>内容：</label>
+                            <textarea  class="textInputContentArea" ></textarea></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="warning">
+                       <p>抱歉！您的创意含有敏感内容</p>
+                        <p>未通过审核，再来一次试试吧</p>
+                    </div>
+                    <div id="SignUpAgain" class="SignUpAgain">
+                        <button class="btnSignUpAgain" type="button" value="重新报名">
+                            <img src="res/img/btnSignUpAgain.png" height="100%" width="100%">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="footer">
+        <img src="res/img/footer02.png" height="100%" width="100%">
+    </section>
+</div>
+
+<script src="res/js/jquery.min.js"></script>
+<script>
+    //“为TA投票”，“我也要参加”按钮点击事件
+    var SignUpAgain = $("#SignUpAgain");
+
+    SignUpAgain.on("click",function(){
+         window.location.href= "index04.html";
+
+    });
+
+    var btnCreate = $("#btnCreate");
+
+    btnCreate.on("click",function(){
+        alert("回到我的创意");
+    });
+
+</script>
+</body>
+</html>
+
+<!-- 
+    User: lijingwen
+    web:  https://github.com/tvxqljw
+    Date: 2015-09-28 Time: 22:45
+-->

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="res/css/layout.css">
+    <link rel="stylesheet" href="res/css/style.css">
+</head>
+<body>
+    <div class="bg">
+            <section id="header">
+                <img src="res/img/header01.png" height="100%" width="100%">            
+                <div  class="btnSignUpBig">
+                      <img id="btnBig" src="res/img/header01-2.png" height="100%" width="100%">
+                      <!-- <button id="btnBig" class="btnBig">
+                        <img  src="res/img/btnBig.png" height="100%">
+                      </button> -->
+                </div>
+                <img src="res/img/header01-3.png" height="100%" width="100%">
+            </section>
+            <div class="clearfix"></div>
+            <section id="content">
+                <div class="content">
+                    <div class="insideContent">
+                        <!-- search-->
+                        <div class="searchBox">
+
+                            <button id="searchButton" class="searchButton" type="button" value="搜索">
+                                <img src="res/img/btnSearch.png" height="100%">
+                            </button>
+                            <input id="searchInput" class="searchInput" type="text"/>
+                        </div>
+                        <div class="tabButton">
+                            <div class="new">
+                                <button id="newest" type="button" value="最新参赛">
+                                    <img src="res/img/btnNew.png" height="100%" width="100%">
+                                </button>
+                            </div>
+                            <div class="rank">
+                                <button id="highest" type="button" value="人气排行">
+                                    <img src="res/img/btnRank.png" height="100%" width="100%">
+                                </button>
+                            </div>
+
+                        </div>
+                        <div class="listContainer">
+                            <ul id="listContainer">
+                            </ul>
+                        </div>
+                        <div class="pagelist" id="pagelist">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="footer">
+                <img src="res/img/signupfooter.png" height="100%" width="100%">
+            </section>
+    </div>
+
+    <script src="res/js/jquery.min.js"></script>
+    <script>
+        $(function () {
+            showListData(data,1,pageCount);//初始化导出最新参赛的排名
+                 //btnBigPlace();
+
+           
+        });
+
+        function btnBigPlace(){
+            if(sw<=1025){
+                var w = sw*0.6;
+                btnBig.css("left",w+'px');
+            }
+            else{
+                btnBig.css("left","55%");
+                btnBig.css("top","50%");
+                btnBig.css("transform","translate(-50%, -50%)");
+            }
+            
+        }
+
+        //声明
+        var btnBig = $("#btnBig");
+        var sw = screen.width;
+
+
+        var searchButton = $("#searchButton"),
+                searchInput = $("#searchInput");
+
+        var tabButtons = $(".tabButton div button"),
+                buttonType = null,
+                listContainer = $("#listContainer"),
+                pagelist = $("#pagelist");
+        var data = [{
+            num:1,
+            name:"xxx",
+            score:132,
+            theme:"xxxxxxxxxxxxx",
+            decription:"获得医院用户对移动患者/HIS/个人相关的创意及功能的真实需求，为后续新产品的研发提供资"
+        },
+        {
+            num:2,
+            name:"xxx",
+            score:131,
+            theme:"xxxxxxxxxxxxx",
+            decription:"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+            {
+                num:3,
+                name:"xxx",
+                score:131,
+                theme:"xxxxxxxxxxxxx",
+                decription:"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+            },
+            {
+                num:4,
+                name:"xxx",
+                score:131,
+                theme:"xxxxxxxxxxxxx",
+                decription:"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+            },
+            {
+                num:5,
+                name:"xxx",
+                score:131,
+                theme:"xxxxxxxxxxxxx",
+                decription:"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+            },
+            {
+                num:6,
+                name:"xxx",
+                score:131,
+                theme:"xxxxxxxxxxxxx",
+                decription:"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+            },
+            {
+                num:7,
+                name:"xxx",
+                score:131,
+                theme:"xxxxxxxxxxxxx",
+                decription:"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+            },
+            {
+                num:8,
+                name:"xxx",
+                score:131,
+                theme:"xxxxxxxxxxxxx",
+                decription:"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+            },
+            {
+                num:9,
+                name:"xxx",
+                score:131,
+                theme:"xxxxxxxxxxxxx",
+                decription:"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+            },
+            {
+                num:10,
+                name:"xxx",
+                score:131,
+                theme:"xxxxxxxxxxxxx",
+                decription:"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+            },
+            {
+                num:11,
+                name:"xxx",
+                score:131,
+                theme:"xxxxxxxxxxxxx",
+                decription:"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+            }];
+
+
+        var pageCount = 4,//每页显示pageCount条信息
+            startPage = 1,//默认从第一条数据读起
+            curPage = 1,//当前页，默认第一页
+            totalPage = 0;//共有多少页，初始化为0
+
+
+        //“我要报名”
+        btnBig.on("click",function(){
+           window.location.href= "index04.html";
+        });
+
+        //搜索事件
+        searchButton.on("click",function(){
+            if(searchInput.val() == "" || searchInput.val() == "undefinded"){
+                alert("请输入搜索关键词");
+                searchInput.focus();
+            }
+            else{
+                alert('正在查询关于”'+searchInput.val()+'"的人...');
+                searchInput.focus();
+            }
+        });
+
+        //“最新参赛”，“人气最高”按钮点击事件
+        $.each(tabButtons,function(){
+            $(this).click(function(){
+                getListData($(this));
+            });
+        });
+        //根据按钮类型获取列表信息
+        function getListData(obj){
+            //类型判断
+            //....
+            // obj.context.id
+            //....
+            //end 类型判断
+            showListData(data,startPage,pageCount);
+            alert("已成功获取"+obj.context.value+"的数据");
+        }
+
+        //根据不同类型排列数据
+        function showListData(data,startPage,count){
+            var html = '';
+            var length = data.length;//length = data.length;
+            var remain = length%pageCount;
+            var total = length/pageCount+1;
+            var start = (startPage-1)*pageCount,end = 0;
+            if(parseInt(startPage) == parseInt(total)){
+                    end = (startPage-1)*count+remain;
+            }
+            else{
+                end = startPage*count;
+            }
+            for(var i =start;i<end;i++){
+                html += '<li>'+
+                        '<table class="listTable" cellspacing="0" cellpadding="0">'+
+                        '        <tr class="listTableHead">'+
+                        '        <td><label>编号：</label><span>'+data[i].num+'</span></td>'+
+                        '<td><label>姓名：</label><span>'+data[i].name+'</span></td>'+
+                        '<td><label>得票数：</label><span>'+data[i].score+'</span></td>'+
+                        '</tr>'+
+                        '<tr class="listTableTheme">'+
+                        '        <td colspan="3">'+
+                        '        <label>主题：</label>'+
+                        '<span>'+data[i].theme+'</span></td>'+
+                        '</tr>'+
+                        '<tr class="listTableDescription">'+
+                        '        <td colspan="3">'+
+                        '        <label>内容：</label>'+
+                        '<span>'+data[i].decription+'</span></td>'+
+                        '</tr>'+
+                        '</table>'+
+                        '</li>';
+            }
+            listContainer.html(html);
+
+            createPage(length,startPage);
+        }
+
+        //生成页码
+        function createPage(len,start){
+            var html = '<span class="normal"  value="1">首页</span>';
+            totalPage = len/pageCount;
+
+            for(var j =1; j <Number(totalPage+1); j++){
+                if(j == start){
+                    html += '<span class="currentPage" value="'+j+'">'+j+'</span>';
+                }
+                else{
+                    html += '<span class="normal" value="'+j+'">'+j+'</span>';
+                }
+
+            }
+            if(parseInt(start) != parseInt(totalPage+1)){
+                //取消“》”按钮
+                html += '<span class="normal"  value="'+Number(parseInt(start)+1)+'">》</span>';
+                
+            }
+            html += '<span class="normal"  value="'+parseInt(totalPage+1)+'">末页</span>';
+
+            
+            pagelist.html(html);
+
+            //页码的点击事件
+            var pageListSpan = $('#pagelist span');
+            pageListSpan.on("click",function(){
+                curPage = $(this).attr("value");
+                pageListSpan.removeClass("currentPage");
+
+                showListData(data,curPage,pageCount);
+
+            });
+        };
+
+    </script>
+</body>
+</html>
+
+<!--
+    User: lijingwen
+    Date: 2015-09-28 Time: 12:52
+-->
